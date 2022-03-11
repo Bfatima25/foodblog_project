@@ -7,6 +7,6 @@ class RecipeAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'title')
     list_filter = ('employer',)
     search_fields = ('title', 'Ingredients', 'Directions', 'Specialdiet', 'Mealtype', 'preptime', 'totaltime')
-    list_per_page = 25
+    list_per_page = 20
 admin.site.register(Recipe, RecipeAdmin)
 
