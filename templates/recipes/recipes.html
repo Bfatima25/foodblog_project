@@ -35,18 +35,18 @@
           {% for recipe in recipes %}
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="card recipe-preview">
-              <img class="card-img-top" src="assets/img/homes/home-1.jpg" alt="">
+              <img class="card-img-top" src="{{ recipe.photo_main.url }}" alt="">
               <div class="card-body">
                 <div class="recipe-heading text-center">
                   <h4 class="text-primary">{{ recipe.title }}</h4>     
-                  <p>Main Course-Vegan</p>
+                  <p>{{ recipe.Mealtype }}-{{ recipe.Specialdiet }}</p>
                 </div>
                 <hr>
               <div class="row py-2 text-secondary">
                 <div class="col-6">
-                  <i class="fas fa-clock"></i> PrepTime: 10 min</div>
+                  <i class="fas fa-clock"></i> PrepTime: {{ recipe.preptime }}</div>
                 <div class="col-6">
-                  <i class="fas fa-clock"></i> TotalTime: 30 min</div>
+                  <i class="fas fa-clock"></i> TotalTime: {{ recipe.totaltime }}</div>
               </div>
               <hr>
               <div class="row py-2 text-secondary">
@@ -55,10 +55,10 @@
               </div>
                 <div class="row text-secondary pb-2">
                   <div class="col-6">
-                    <i class="fas fa-user"></i> Recipe by: Judith Craig</div>
+                    <i class="fas fa-user"></i> Recipe by: {{ recipe.employer }}</div>
                 </div>
                 <hr>
-                  <a href="recipe.html" class="btn btn-primary btn-block">More Info</a>
+                  <a href="{% url 'recipe' recipe.id %}" class="btn btn-primary btn-block">More Info</a>
                 </div>
               </div>
             </div>
