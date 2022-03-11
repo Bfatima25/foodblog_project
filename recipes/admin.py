@@ -1,3 +1,12 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Recipe
+
+class RecipeAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'is_published', 'list_date', 'employer')
+    list_display_links = ('id', 'title')
+    list_filter = ('employer',)
+    search_fields = ('title', 'Ingredients', 'Directions', 'Specialdiet', 'Mealtype', 'preptime', 'totaltime')
+    list_per_page = 25
+admin.site.register(Recipe, RecipeAdmin)
+
