@@ -52,136 +52,47 @@
   </section>
 
   <!-- Recipes -->
-  <section id="recipes" class="py-5">
+  <section id="recipes" class="py-4">
     <div class="container">
-      <h3 class="text-center mb-3">Latest Recipes</h3>
       <div class="row">
-        <!-- recipe 1 -->
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card recipe-preview">
-            <img class="card-img-top" src="assets/img/homes/home-1.jpg" alt="">
-            <div class="card-img-overlay">
-            </div>
-            <div class="card-body">
-              <div class="recipe-heading text-center">
-                <h4 class="text-primary">Pancakes</h4>
-                <p>Gluten-Free</p>
+        {% if recipes %}
+          {% for recipe in recipes %}
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card recipe-preview">
+              <img class="card-img-top" src="{{ recipe.photo_main.url }}" alt="">
+              <div class="card-body">
+                <div class="recipe-heading text-center">
+                  <h4 class="text-primary">{{ recipe.title }}</h4>     
+                  <p>{{ recipe.Mealtype }}-{{ recipe.Specialdiet }}</p>
+                </div>
+                <hr>
+              <div class="row py-2 text-secondary">
+                <div class="col-6">
+                  <i class="fas fa-clock"></i> PrepTime: {{ recipe.preptime }}</div>
+                <div class="col-6">
+                  <i class="fas fa-clock"></i> TotalTime: {{ recipe.totaltime }}</div>
               </div>
               <hr>
               <div class="row py-2 text-secondary">
-                <div class="col-6">Prep Time: 20 min</div>
-                <div class="col-6">Total Time: 30 min
+                <div class="col-12">
+                  Click Below for recipe!</div>
+              </div>
+                <div class="row text-secondary pb-2">
+                  <div class="col-6">
+                    <i class="fas fa-user"></i> Recipe by: {{ recipe.employer }}</div>
+                </div>
+                <hr>
+                  <a href="{% url 'recipe' recipe.id %}" class="btn btn-primary btn-block">More Info</a>
                 </div>
               </div>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i></i> Ingredients:</div>
-                <div class="col-6">
-                  <i></i> Bathrooms: 2</div>
-              </div>
-              <hr>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i></i> Directions</div>
-              </div>
-              <div class="row text-secondary pb-2">
-                <div class="col-6">
-                  <i class="fas fa-clock"></i> 5 days ago</div>
-              </div>
-              <hr>
-              <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
             </div>
+          {% endfor %}
+        {% else %}
+          <div class="col-md-12">
+            <p>No Recipes Available</p>
           </div>
-        </div>
-
-        <!-- Listing 2 -->
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card listing-preview">
-            <img class="card-img-top" src="assets/img/homes/home-2.jpg" alt="">
-            <div class="card-img-overlay">
-              <h2>
-                <span class="badge badge-secondary text-white">$550,000</span>
-              </h2>
-            </div>
-            <div class="card-body">
-              <div class="listing-heading text-center">
-                <h4 class="text-primary">18 Jefferson Lane</h4>
-                <p>
-                  <i class="fas fa-map-marker text-secondary"></i> Woburn MA, 01801</p>
-              </div>
-              <hr>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-th-large"></i> Sqft: 3200</div>
-                <div class="col-6">
-                  <i class="fas fa-car"></i> Garage: 1</div>
-              </div>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-bed"></i> Bedrooms: 4</div>
-                <div class="col-6">
-                  <i class="fas fa-bath"></i> Bathrooms: 2.5</div>
-              </div>
-              <hr>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-user"></i> Mark Hudson</div>
-              </div>
-              <div class="row text-secondary pb-2">
-                <div class="col-6">
-                  <i class="fas fa-clock"></i> 5 days ago</div>
-              </div>
-              <hr>
-              <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Listing 3 -->
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card listing-preview">
-            <img class="card-img-top" src="assets/img/homes/home-3.jpg" alt="">
-            <div class="card-img-overlay">
-              <h2>
-                <span class="badge badge-secondary text-white">$580,000</span>
-              </h2>
-            </div>
-            <div class="card-body">
-              <div class="listing-heading text-center">
-                <h4 class="text-primary">187 Woodrow Street</h4>
-                <p>
-                  <i class="fas fa-map-marker text-secondary"></i> Salem MA, 01915</p>
-              </div>
-              <hr>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-th-large"></i> Sqft: 3107</div>
-                <div class="col-6">
-                  <i class="fas fa-car"></i> Garage: 0</div>
-              </div>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-bed"></i> Bedrooms: 4</div>
-                <div class="col-6">
-                  <i class="fas fa-bath"></i> Bathrooms: 3</div>
-              </div>
-              <hr>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-user"></i> Mark Hudson</div>
-              </div>
-              <div class="row text-secondary pb-2">
-                <div class="col-6">
-                  <i class="fas fa-clock"></i> 5 days ago</div>
-              </div>
-              <hr>
-              <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
-            </div>
-          </div>
-        </div>
-
+        {% endif %}
       </div>
     </div>
   </section>
-
 {% endblock %}

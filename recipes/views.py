@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .models import Recipe
 
 def index(request):
-    recipes = Recipe.objects.all()
+    recipes = Recipe.objects.order_by('-list_date').filter(is_published=True)
 
     context = {
         'recipes': recipes
