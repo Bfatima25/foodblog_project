@@ -69,35 +69,23 @@
     <div class="container">
       <h2 class="text-center">Our Team</h2>
       <div class="row text-center">
-        <div class="col-md-4">
-          <h4>Judith Craig</h4>
-          <p class="text-success">Head Chef
-          <hr>
-          <p>
-            <i class="fas fa-phone"></i> (222)-222-2222</p>
-          <p>
-            <i class="fas fa-envelope-open"></i> judith@BFfoodblog.net</p>
-        </div>
-
-        <div class="col-md-4">
-          <h4>Lynda Nash</h4>
-          <p class="text-success">Baker</p>
-          <hr>
-          <p>
-            <i class="fas fa-phone"></i> (444)-444-4444</p>
-          <p>
-            <i class="fas fa-envelope-open"></i> lynda@BFfoodblog.net</p>
-        </div>
-
-        <div class="col-md-4">
-          <h4>Kyle Brown</h4>
-          <p class="text-success">Kitchen Manager</p>
-          <hr>
-          <p>
-            <i class="fas fa-phone"></i> (333)-333-3333</p>
-          <p>
-            <i class="fas fa-envelope-open"></i> kyle@BFfoodblog.net</p>
-        </div>
+          {% if employers %}
+            {% for employer in employers %}
+              <div class="col-md-4">
+                <h4>{{ employer.name }}</h4>
+                <p class="text-success">Chef </p>
+              <hr>
+              <p>
+                <i class="fas fa-phone"></i> {{ employer.phone }}</p>
+              <p>
+                <i class="fas fa-envelope-open"></i> {{ employer.email }}</p>
+            </div>
+            {% endfor %}
+          {% else %}
+            <div class="com-md-12">
+              <p>No Employers Available</p>
+            </div>
+        {% endif %}
       </div>
     </div>
   </section>
