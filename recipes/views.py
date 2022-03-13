@@ -21,4 +21,9 @@ def recipe(request, recipe_id):
     return render(request, 'recipes/recipe.html', context)
 
 def search(request):
-    return render(request, 'recipes/search.html')
+
+    context = {
+        'search': recipe
+    }
+
+    return render(request, 'recipes/search.html', context)
